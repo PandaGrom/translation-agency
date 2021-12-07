@@ -1,4 +1,6 @@
-require: rubocop-rails
+require: 
+- rubocop-rails
+- rubocop
 
 AllCops:
   NewCops: enable
@@ -20,4 +22,3 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 30
-  
