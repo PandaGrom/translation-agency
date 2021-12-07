@@ -7,6 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :orders, dependent: :restrict_with_exception
-  #has_one :categories, as: :categorable, dependent: :destroy
+  # has_one :categories, as: :categorable, dependent: :destroy
   has_many :comments, dependent: :restrict_with_exception
 end
