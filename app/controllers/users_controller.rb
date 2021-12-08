@@ -1,4 +1,3 @@
-class UserController < ActionController::Base
-	def index
-	end
+class UserController < ApplicationController
+  def index; end
 end

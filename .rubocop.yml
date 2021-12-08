@@ -1,6 +1,4 @@
-require: 
-- rubocop-rails
-- rubocop
+require: rubocop-rails
 
 AllCops:
   NewCops: enable
@@ -22,3 +20,9 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 30
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'

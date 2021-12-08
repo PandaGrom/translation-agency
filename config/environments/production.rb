@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
@@ -119,5 +117,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.default_url_options = { https://translation-agency.herokuapp.com/ }
+  # config.action_mailer.default_url_options = { https://translation-agency.herokuapp.com/ }
 end
