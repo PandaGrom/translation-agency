@@ -26,4 +26,3 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'test/**/*.rb'
-    
