@@ -6,7 +6,7 @@ class AddOrders < ActiveRecord::Migration[6.1]
       # t.boolean :status, default: false
       t.text :description
       t.references :user, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
+      # t.references :category, null: false, foreign_key: true
       t.timestamps
     end
   end
