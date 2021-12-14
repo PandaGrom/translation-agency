@@ -6,6 +6,7 @@ ruby '3.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
+gem 'pundit'
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -25,10 +26,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'devise'
-gem 'rubocop', require: false
-gem 'rubocop-rails', require: false
+gem 'rubocop'
+gem 'rubocop-rails'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '>= 1.4.4'
+gem 'bootstrap', '~> 5.1.3'
+gem 'jquery-rails'
+gem 'htmlbeautifier'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
