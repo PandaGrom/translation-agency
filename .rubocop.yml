@@ -30,3 +30,4 @@ Metrics/BlockLength:
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
   Max: 30
+  
