@@ -26,3 +26,7 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'test/**/*.rb'
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+  Max: 30
