@@ -1,0 +1,11 @@
+<h1>Orders</h1>
+
+<% @orders.each do |order| %>
+  <h2><%= order.title %></h2>
+
+  <time datetime="<%= order.formatted_created_at %>">
+    <%= order.formatted_created_at %>
+  </time>
+
+  <%= link_to 'Show', order_path(order) %>
+<% end %>

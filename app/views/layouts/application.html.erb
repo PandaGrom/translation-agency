@@ -12,6 +12,7 @@
     <% if user_signed_in? %>
       <div>
         <%= link_to 'Home', root_path %>
+        <%= link_to 'Orders', orders_path %>
       </div>
       <div>
         <span> Hello, <%= current_user.email %></span>
