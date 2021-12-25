@@ -7,4 +7,5 @@ class User < ApplicationRecord
   enum role: { user: 0, translator: 1, admin: 2 }
 
   has_many :orders
+  has_many :categories, as: :categorable
 end

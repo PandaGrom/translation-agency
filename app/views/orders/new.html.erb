@@ -4,10 +4,13 @@
     <%= f.label :title%>
     <%= f.text_field :title, required: true, minlength: 6 %>
   </div>
-
   <div>
-  <%= f.label :description %>
-  <%= f.text_area :description%>
-
+    <%= f.label :description %>
+    <%= f.text_area :description%>
+  </div>
+  <div>
+    <%= f.label :category %>
+    <%= f.text_area :category%>
+  </div>
   <%= f.submit 'Create order'%>
 <% end %>
