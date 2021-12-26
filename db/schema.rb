@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_12_15_135455) do
+ActiveRecord::Schema.define(version: 2021_12_26_170637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "categorable_type"
+    t.bigint "categorable_id"
+    t.index ["categorable_type", "categorable_id"], name: "index_categories_on_categorable"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string "title"
@@ -24,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_135455) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "aasm_state"
+    t.index ["aasm_state"], name: "index_orders_on_aasm_state"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
