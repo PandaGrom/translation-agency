@@ -5,17 +5,9 @@ class Order < ApplicationRecord
     created_at.strftime('%Y-%m-%d %H:%M:%S')
   end
 
-  def self.search(search)
-    if search
-      order = Order.find_by(title: search)
-        if order
-          self.where(id: order)
-        else
-          @orders = Order.all
-        end
-      else
-        @orders = Order.all
-      end
+  def self.search(query)
+    return Order.all unless query
+
+    where(title: query)
   end
-  
 end

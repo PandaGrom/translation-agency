@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
   def new
     @order = Order.new
   end
@@ -22,8 +22,8 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def order_params
     params.require(:order).permit(:title, :description)
   end
-  
 end
