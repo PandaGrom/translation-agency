@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = Order.search(params[:search])
   end
 
   def show
     @order = Order.find(params[:id])
   end
-  
+
   def new
     @order = Order.new
   end
@@ -22,8 +22,8 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def order_params
     params.require(:order).permit(:title, :description)
   end
-  
 end
