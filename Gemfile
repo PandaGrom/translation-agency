@@ -29,12 +29,12 @@ gem 'devise'
 gem 'rubocop'
 gem 'rubocop-rails'
 # Reduces boot times through caching; required in config/boot.rb
+gem 'aasm'
+gem 'after_commit_everywhere', '~> 1.0'
 gem 'bootsnap', '>= 1.4.4'
 gem 'bootstrap', '~> 5.1.3'
 gem 'htmlbeautifier'
 gem 'jquery-rails'
-gem 'aasm'
-gem 'after_commit_everywhere', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -37,10 +37,12 @@
             </ul>
           <% end %>
         </ul>
-        <%= form_tag orders_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
-          <%= submit_tag('Search', :title => nil, class: "btn btn-outline-success my-2 my-sm-0")  %>
-        <% end %>
+        <form class="d-flex">
+          <%= form_tag orders_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
+            <%= submit_tag('Search', :title => nil, class: "btn btn-outline-success my-2 my-sm-0")  %>
+          <% end %>
+        </form>
       </div>
     </nav>
     <p class="notice"><%= notice %></p>
