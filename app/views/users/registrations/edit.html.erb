@@ -4,14 +4,14 @@
     <%= render "users/shared/error_messages", resource: resource %>
     <form>
       <div class="form-floating">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingInput" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2", id: "floatingInput" %>
         <label for="floatingInput">Email</label>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
       <div class="form-floating">
-        <%= f.password_field :password, autofocus: true, class: "form-control", id: "floatingInput" %>
+        <%= f.password_field :password, autofocus: true, class: "form-control my-2", id: "floatingInput" %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />

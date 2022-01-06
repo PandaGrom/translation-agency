@@ -3,11 +3,11 @@
     <form>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       <div class="form-floating">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingInput" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2", id: "floatingInput" %>
         <label for="floatingInput">Email</label>
       </div>
       <div class="form-floating">
-        <%= f.password_field :password, autofocus: true, class: "form-control", id: "floatingInput" %>
+        <%= f.password_field :password, autofocus: true, class: "form-control my-2", id: "floatingInput" %>
         <label for="floatingInput">Password</label>
       </div>
       <% if devise_mapping.rememberable? %>
