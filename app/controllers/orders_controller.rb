@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :find_category, only: [:create]
   def index
     @orders = Order.search(params[:search])
   end
@@ -9,11 +10,13 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @categories = Category.all.pluck(:title)
   end
 
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    @order.category = @category
     if @order.save
       redirect_to orders_path(@order)
     else
@@ -22,6 +25,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def find_category
+    @category = Category.find(params['order']['category_id'])
+  end
 
   def order_params
     params.require(:order).permit(:title, :description)

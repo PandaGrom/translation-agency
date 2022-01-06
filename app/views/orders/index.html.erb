@@ -1,13 +1,14 @@
-<h1>Orders</h1>
-
+<h1 class="mb-4">Orders</h1>
 <% @orders.each do |order| %>
-  <h2><%= order.title %></h2>
-
-  <time datetime="<%= order.formatted_created_at %>">
-    <%= order.formatted_created_at %>
-  </time>
-
-  <%= link_to 'Show', order_path(order) %>
-
-
+  <article class="card">
+    <div class="card-body">
+      <h4><%= order.title %></h4>
+      <section class="card-text">
+        <time datetime="<%= order.formatted_created_at %>">
+          <small><%= order.formatted_created_at %></small>
+        </time>
+      </section>
+      <%= link_to 'Show', order_path(order), class: "btn btn-outline-success my-2 my-sm-0" %>
+    </div>
+  </article>
 <% end %>
