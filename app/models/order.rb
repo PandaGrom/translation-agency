@@ -8,12 +8,12 @@ class Order < ApplicationRecord
   include AASM
 
   aasm do # default column: aasm_state
-    state :on_consider, initial: true
+    state :open, initial: true
     state :in_progress
     state :completed
 
     event :take do
-      transitions from: :on_consider, to: :in_progress
+      transitions from: :open, to: :in_progress
     end
 
     event :complete do

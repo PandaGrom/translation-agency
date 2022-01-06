@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  after_action :set, only: [:create]
+  before_action :find_category, only: [:create]
   def index
     @orders = Order.search(params[:search])
   end
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
-
+    @order.category = @category
     if @order.save
       redirect_to orders_path(@order)
     else
@@ -26,9 +26,8 @@ class OrdersController < ApplicationController
 
   private
 
-  def set
-    category = Category.find(params['order']['category_id'])
-    @order.category = category
+  def find_category
+    @category = Category.find(params['order']['category_id'])
   end
 
   def order_params
