@@ -3,8 +3,16 @@
     <form>
       <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
       <div class="form-floating">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingInput" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2", id: "floatingInput" %>
         <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control my-2", id: "floatingInput" %>
+        <label for="floatingInput">Name</label>
+      </div>
+      <div class="form-floating">
+        <%= f.text_field :contacts, autofocus: true, autocomplete: "contacts", class: "form-control my-2", id: "floatingInput" %>
+        <label for="floatingInput">Contacts</label>
       </div>
       <div class="form-floating">
         <%= f.password_field :password, autofocus: true, class: "form-control my-2", id: "floatingInput" %>
