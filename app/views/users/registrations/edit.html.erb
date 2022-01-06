@@ -4,7 +4,7 @@
     <%= render "users/shared/error_messages", resource: resource %>
     <form>
       <div class="form-floating">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2", id: "floatingInput" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingInput" %>
         <label for="floatingInput">Email</label>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -32,7 +32,4 @@
       </form>
     <% end %>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "w-100 btn btn-lg btn btn-outline-danger my-2 my-sm-0", data: { confirm: "Are you sure?" }, method: :delete %></p>
-    
-      <%= button_to "Back", :back, class: "w-100 btn btn-lg btn btn-outline-dark my-2 my-sm-0" %>
-   
-    
+    <%= button_to "Back", :back, class: "w-100 btn btn-lg btn btn-outline-dark my-2 my-sm-0" %>
