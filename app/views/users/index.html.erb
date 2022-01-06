@@ -1,0 +1,14 @@
+<h1 class="mb-4">Users</h1>
+<% @users.each do |user| %>
+  <article class="card">
+    <div class="card-body">
+      <h4><%= user.name %></h4>
+      <section class="card-text">
+        <time datetime="<%= user.created_at %>">
+          <small><%= user.created_at %></small>
+        </time>
+      </section>
+      <%= link_to 'Show', user_path(user), class: "btn btn-outline-success my-2 my-sm-0" %>
+    </div>
+  </article>
+<% end %>
