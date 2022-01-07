@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
   before_action :find_category, only: [:create]
   def index
-    @orders = Order.search(params[:search])
+    @orders = if current_user.role == 'user'
+                current_user.orders
+              else
+                Order.search(params[:search])
+              end
   end
 
   def show
