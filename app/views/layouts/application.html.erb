@@ -27,10 +27,16 @@
                   <li class="nav-item">
                     <%= link_to 'My Orders', orders_path, class: "nav-link" %>
                   </li>
+                  <li class="nav-item">
+                    <%= link_to 'Create order', new_order_path, class: "nav-link" %>
+                  </li>
                 <%end%>
                 <%if current_user.admin? %>
                   <li class="nav-item">
                     <%= link_to 'Users', users_path, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Comments', admin_comments_path, class: "nav-link" %>
                   </li>
                 <% end %>
                 <li class="nav-item">
@@ -61,6 +67,10 @@
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if current_user&.blocked %>
+      <h4>You are blocked :c</h4>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

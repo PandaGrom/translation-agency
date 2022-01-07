@@ -15,6 +15,21 @@
         <%= f.text_field :contacts, autofocus: true, autocomplete: "name", class: "form-control my-2", id: "floatingInput" %>
         <label for="floatingInput">Contacts</label>
       </div>
+      <% if current_user.translator? %>
+      <div class="form-floating">
+        <%= f.text_field :pricing, autofocus: true, autocomplete: "pricing", class: "form-control my-2", id: "floatingInput" %>
+        <label for="floatingInput">Pricing(for 1000 symbols)</label>
+      </div>
+        <span>Choose your categories:</span>
+        <div>
+          <%= collection_check_boxes(:user, :category_ids, Category.order(:created_at), :id, :title ) do |b| %>
+            <li>
+              <%= b.check_box %>
+              <%= b.label %>
+            </li>
+          <% end %>
+        </div>
+      <%end%>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
