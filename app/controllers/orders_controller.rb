@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @comment = @order.comments.build
+    @comments = Comment.where(order_id: @order.id)
   end
 
   def new

@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_one_attached :file
+  has_many :comments, dependent: :delete_all
 
   def formatted_created_at
     created_at.strftime('%Y-%m-%d %H:%M:%S')
