@@ -1,12 +1,18 @@
 <h1 class="mb-4"><%= @order.title %> </h1>
-<time datetime="<%= @order.formatted_created_at %>">
-  <%= @order.formatted_created_at %>
-</time>
 <p class="lead my-3">
+  <span>Created at: </span>
+  <time datetime="<%= @order.formatted_created_at %>">
+    <%= @order.formatted_created_at %>
+  </time><br>
+  <span>Deadline: </span>
+  <time datetime="<%= @order.deadline %>">
+    <%= @order.deadline %>
+  </time><br>
   <span>Description: </span>
   <%= @order.description%><br>
   <span>Status: </span>
   <%= @order.aasm_state%><br>
   <span>Category: </span>
-  <%= @order.category.title%>
+  <%= @order.category.title%><br>
+  <%= link_to 'Download file', @order.file%>
 </p>
