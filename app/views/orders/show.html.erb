@@ -15,6 +15,7 @@
   <span>Category: </span>
   <%= @order.category.title%><br>
   <%= link_to 'Download file', @order.file%>
+  <%= link_to 'Delete', order_path(@order),  method: :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
   <div class='mb-3 row'>
     <%= form_with model: [@order, @comment] do |f| %>
       <span>Send comment: </span><br>
