@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @order.comments.find(params[:id])
-    
+
     @comment.destroy
     flash[:success] = 'Comment deleted'
     redirect_to order_path(@order)

@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :users do
-    get 'block', on: :member
-    get 'unblock', on: :member
+    get 'edit', on: :member
   end
 
   namespace :admin do

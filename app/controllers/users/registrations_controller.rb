@@ -38,8 +38,8 @@ module Users
       devise_parameter_sanitizer.permit(:sign_up, keys: %i[role name contacts])
     end
 
-    #If you have extra params to permit, append them to the sanitizer.
-    
+    # If you have extra params to permit, append them to the sanitizer.
+
     def configure_account_update_params
       update_categories_for_user(params['user']['email'], params['user']['category_ids'])
       devise_parameter_sanitizer.permit(:account_update, keys: %i[name email password contacts category_ids pricing])

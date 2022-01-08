@@ -26,7 +26,7 @@ class Order < ApplicationRecord
   has_one :category, as: :categorable
 
   def self.search(query)
-    return Order.all unless query.present?
+    return Order.all if query.blank?
 
     where('title ILIKE ?', "#{query}%")
   end
