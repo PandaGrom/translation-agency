@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :users do
-    get 'edit', on: :member
-  end
+  resources :users, only: %i[update index show]
 
   namespace :admin do
     resources :comments, only: %i[destroy index]

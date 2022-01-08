@@ -15,14 +15,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    user = User.find(params[:id])
-    user.blocked = if user.blocked = true
-                     false
-                   else
-                     true
-                   end
-    user.save
-    redirect_to user_path(user)
+  def update
+    @user = User.find(params[:id])
+    @user.blocked = !@user.blocked
+    @user.save!
+    redirect_to user_path(@user)
   end
 end
