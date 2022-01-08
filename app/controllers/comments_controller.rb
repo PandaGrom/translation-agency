@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_order, only: %i[destroy create]
   def index
+    authorize @comment
     @comments = Comment.all
   end
 
