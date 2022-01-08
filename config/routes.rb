@@ -2,11 +2,21 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :users
+  resources :users do
+    get 'edit', on: :member
+  end
 
-  resources :orders
+  namespace :admin do
+    resources :comments, only: %i[destroy index]
+  end
+
+  resources :orders do
+    resources :comments, only: %i[create destroy]
+  end
 
   resources :categories
+
+  resources :comments
 
   root to: 'home#index'
 

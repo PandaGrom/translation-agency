@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :delete_all
   has_many :categories, as: :categorable
+  has_many :replies, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
 end

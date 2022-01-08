@@ -3,9 +3,12 @@
   <article class="card">
     <div class="card-body">
       <h4><%= order.title %></h4>
+      <span> Status:</span>
+      <%= order.aasm_state %>
       <section class="card-text">
-        <time datetime="<%= order.formatted_created_at %>">
-          <small><%= order.formatted_created_at %></small>
+        <span> Deadline:</span>
+        <time datetime="<%= order.deadline %>">
+          <small><%= order.deadline %></small>
         </time>
       </section>
       <%= link_to 'Show', order_path(order), class: "btn btn-outline-success my-2 my-sm-0" %>

@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
+  has_one_attached :file
+  has_many :comments, dependent: :delete_all
 
   def formatted_created_at
     created_at.strftime('%Y-%m-%d %H:%M:%S')
@@ -24,8 +26,8 @@ class Order < ApplicationRecord
   has_one :category, as: :categorable
 
   def self.search(query)
-    return Order.all unless query
+    return Order.all if query.blank?
 
-    where(title: query)
+    where('title ILIKE ?', "#{query}%")
   end
 end

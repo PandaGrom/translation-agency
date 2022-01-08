@@ -1,0 +1,18 @@
+<h1 class="mb-4">Comments</h1>
+<% @comments.each do |comment| %>
+  <article class="card">
+    <div class="card-body">
+      <h4><%= comment.text %></h4>
+      <section class="card-text">
+        <time datetime="<%= comment.created_at %>">
+          <small><%= comment.created_at %></small>
+        </time><br>
+        <span>User:</span>
+        <%= link_to comment.user.name, user_path(comment.user), class: "my-2 my-sm-0" %><br>
+        <span>Order:</span>
+        <%= link_to comment.order.title, order_path(comment.order), class: "my-2 my-sm-0" %>
+      </section>
+      <%= link_to 'Delete', admin_comment_path(comment), method: :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
+    </div>
+  </article>
+<% end %>
