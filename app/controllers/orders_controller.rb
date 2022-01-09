@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @order.category = new_category
 
     if @order.save
-      redirect_to orders_path(@order)
+      redirect_to orders_path
       CalculateFileReport.perform_async(@order.id)
     else
       render :new
