@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_one_attached :file
+  has_one :order_file_report, dependent: :delete
   has_many :comments, dependent: :delete_all
 
   def formatted_created_at
@@ -20,6 +21,10 @@ class Order < ApplicationRecord
 
     event :complete do
       transitions from: :in_progress, to: :completed
+    end
+
+    event :cancel do
+      transitions from: :in_progress, to: :open
     end
   end
 

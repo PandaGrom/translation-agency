@@ -46,10 +46,25 @@ module Users
     end
 
     def update_categories_for_user(email, category_ids)
-      user = User.find_by(email: email)
+      @user = User.find_by(email: email)
 
-      user.category_ids = category_ids
-      user.save!
+      set_new_categories(category_ids)
+
+      @user.save!
+    end
+
+    def drop_old_categories
+      Category.where(categorable_id: @user.id).destroy_all
+    end
+
+    def set_new_categories(category_ids)
+      category_titles = Category.where(id: category_ids).map(&:title)
+
+      drop_old_categories
+
+      category_titles.each do |title|
+        Category.create(title: title, categorable_id: @user.id, categorable_type: 'User')
+      end
     end
 
     # The path used after sign up.

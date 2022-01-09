@@ -12,6 +12,18 @@
         </time>
       </section>
       <%= link_to 'Show', order_path(order), class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% if current_user.id == order.user.id || current_user.admin? %>
+        <%= link_to 'Delete', order_path(order), method: :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
+      <% end %>
+      <% if current_user.id == order.user.id %>
+        <% if order.aasm_state == 'open' %>
+          <%= link_to 'In progress', order_path(order, action_type: :take), method: :patch, class: "btn btn-outline-info my-2 my-sm-0" %>
+        <% end %>
+        <% if order.aasm_state == 'in_progress' %>
+          <%= link_to 'Open', order_path(order, action_type: :cancel), method: :patch, class: "btn btn-outline-info my-2 my-sm-0" %>
+          <%= link_to 'Completed', order_path(order, action_type: :complete), method: :patch, class: "btn btn-outline-success my-2 my-sm-0" %>
+        <% end %>
+      <% end %>
     </div>
   </article>
 <% end %>
