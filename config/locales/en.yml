@@ -1,33 +1,34 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  en: English
+  ru: Russian
+  home:
+    index:
+      h1: "Welcome to Translation Agency!"
+      h2: "Our website provides services:"
+      orders: "Orders"
+      users: 'Users'
+      comments: 'Comments'
+      new_order: 'Create new order'
+      orders_discription: 'Look at all the orders and choose the right one'
+      users_discription: 'View the list of all users'
+      comments_discription: 'View the list of all comments'
+      new_order_discription: 'Create a new order'
+      button_orders: "Orders"
+      button_users: 'Users'
+      button_comments: 'Comments'
+      button_new_order: 'Create order'
+
+  layouts:
+    application:
+      button_orders: "Orders"
+      button_users: 'Users'
+      button_comments: 'Comments'
+      button_new_order: 'Create order'
+      button_my_orders: 'My Orders'
+      button_logout: 'Logout'
+      button_edit_profile: 'Edit profile'
+      register: 'Register now'
+      login: 'Login'
+      search: 'Search'
+  menu:
+    home: "Home"

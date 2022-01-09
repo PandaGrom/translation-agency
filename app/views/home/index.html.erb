@@ -1,1 +1,53 @@
-<h1>Hi</h1>
+<h1><%= t('.h1')%></h1>
+<% if user_signed_in? %>
+  <div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom"><%= t('.h2')%></h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <%if current_user.role != 'user'%>
+        <div class="feature col">
+          <div class="feature-icon bg-success bg-gradient">
+            <svg class="bi" width="1em" height="1em"></svg>
+          </div>
+          <h3><%= t('.orders')%></h3>
+          <p><%= t('.orders_discription')%></p>
+          <%= link_to "#{t('.button_orders')}", orders_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+        </div>
+      <% end %>
+      <%if current_user.admin? %>
+        <div class="feature col">
+          <div class="feature-icon bg-success bg-gradient">
+            <svg class="bi" width="1em" height="1em"></svg>
+          </div>
+          <h3><%= t('.users')%></h3>
+          <p><%= t('.users_discription')%></p>
+          <%= link_to "#{t('.button_users')}", users_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+          <svg class="bi" width="1em" height="1em"></svg>
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-success bg-gradient">
+          <svg class="bi" width="1em" height="1em"></svg>
+        </div>
+        <h3><%= t('.comments')%></h3>
+        <p><%= t('.comments_discription')%></p>
+        <%= link_to "#{t('.button_comments')}", admin_comments_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+        <svg class="bi" width="1em" height="1em"></svg>
+      </a>
+    </div>
+  </div>
+<% end %>
+<%if current_user.user?%>
+  <div class="feature col">
+    <div class="feature-icon bg-success bg-gradient">
+      <svg class="bi" width="1em" height="1em"></svg>
+    </div>
+    <h3><%= t('.new_order')%></h3>
+    <p><%= t('.new_order_discription')%></p>
+    <%= link_to "#{t('.button_new_order')}", new_order_path, class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <svg class="bi" width="1em" height="1em"></svg>
+  </a>
+</div>
+</div>
+<% end %>
+</div>
+<% end %>
