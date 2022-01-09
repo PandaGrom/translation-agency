@@ -58,11 +58,11 @@ module Users
     end
 
     def set_new_categories(category_ids)
-      category_titles = Category.where(id: category_ids).map { |item| item.title }
+      category_titles = Category.where(id: category_ids).map(&:title)
 
       drop_old_categories
 
-      category_titles.each do |title| 
+      category_titles.each do |title|
         Category.create(title: title, categorable_id: @user.id, categorable_type: 'User')
       end
     end
