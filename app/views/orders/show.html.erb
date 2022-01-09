@@ -25,6 +25,7 @@
   <br>
   <%= link_to 'Export csv', export_csv_file_order_path(@order), class: "btn btn-outline-info" %>
   <%= link_to 'Download file', @order.file, class: "btn btn-outline-info"%>
+  <%= link_to 'Delete', order_path(@order),  method: :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
   <div class='mb-3 row'>
     <%= form_with model: [@order, @comment] do |f| %>
       <span>Send comment: </span><br>
