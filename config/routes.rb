@@ -1,5 +1,10 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'home/index'
+
+  mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :users, only: %i[update index show]
@@ -10,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :orders do
     resources :comments, only: %i[create destroy]
+    patch 'take', on: :member
+    patch 'close', on: :member
+    patch 'open', on: :member
+    get 'export_csv_file', on: :member
   end
 
   resources :categories

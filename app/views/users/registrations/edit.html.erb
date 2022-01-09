@@ -22,7 +22,12 @@
       </div>
         <span>Choose your categories:</span>
         <div>
-          <%= collection_check_boxes(:user, :category_ids, Category.order(:created_at), :id, :title ) do |b| %>
+          <%= collection_check_boxes(
+            :user, 
+            :category_ids, 
+            (current_user.categories + Category.where('categorable_id <> ? and categorable_type <> ?', current_user.id, 'User')).uniq { |item| item.title }, 
+            :id, 
+            :title) do |b| %>
             <li>
               <%= b.check_box %>
               <%= b.label %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_191204) do
+ActiveRecord::Schema.define(version: 2022_01_08_225205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2022_01_07_191204) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "order_file_reports", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "symbols_count", null: false
+    t.integer "words_count", null: false
+    t.integer "symbols_exlude_spaces_count", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_file_reports_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "title"
     t.decimal "cost", default: "0.0"
@@ -107,6 +117,7 @@ ActiveRecord::Schema.define(version: 2022_01_07_191204) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "orders"
   add_foreign_key "comments", "users"
+  add_foreign_key "order_file_reports", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"

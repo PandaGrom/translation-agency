@@ -14,7 +14,17 @@
   <%= @order.aasm_state%><br>
   <span>Category: </span>
   <%= @order.category.title%><br>
-  <%= link_to 'Download file', @order.file%>
+  <br>
+  <span>File report: </span><br>
+  <span>Symbols count: </span>
+  <%= @order.order_file_report.symbols_count %><br>
+  <span>Words count: </span>
+  <%= @order.order_file_report.words_count %><br>
+  <span>Symbols exclude spaces count: </span>
+  <%= @order.order_file_report.symbols_exlude_spaces_count%><br>
+  <br>
+  <%= link_to 'Export csv', export_csv_file_order_path(@order), class: "btn btn-outline-info" %>
+  <%= link_to 'Download file', @order.file, class: "btn btn-outline-info"%>
   <div class='mb-3 row'>
     <%= form_with model: [@order, @comment] do |f| %>
       <span>Send comment: </span><br>
@@ -28,15 +38,15 @@
   <% end %>
   <h2 class="mt-5">Comments: </h2>
   <% @comments.each do |comment|%>
-      <time datetime="<%= comment.created_at %>">
-        <%=comment.created_at%>
-      </time>
-      <p>
-        <%= comment.text %>
-      </p>
-       <p>
-        <%= comment.user.name %>
-      </p>
-      <%= link_to 'Delete', order_comment_path(@order, comment),  method: :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
+    <time datetime="<%= comment.created_at %>">
+      <%=comment.created_at%>
+    </time>
+    <p>
+      <%= comment.text %>
+    </p>
+    <p>
+      <%= comment.user.name%>
+    </p>
+    <%= link_to 'Delete', order_comment_path(@order, comment),  method: :delete, class: "btn btn-outline-danger" %><br>
   <% end %>
 </p>
