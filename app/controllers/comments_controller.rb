@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_order, only: %i[destroy create]
   def index
+    authorize @comment
     @comments = Comment.all
   end
 
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @order.comments.find(params[:id])
-
+    authorize @comment
     @comment.destroy
     flash[:success] = 'Comment deleted'
     redirect_to order_path(@order)
