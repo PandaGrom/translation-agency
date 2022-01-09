@@ -3,6 +3,7 @@
 class OrdersController < ApplicationController
   before_action :find_category, only: [:create]
   def index
+    authorize Order
     @orders = if current_user.role == 'user'
                 current_user.orders.order(:created_at)
               else
@@ -12,6 +13,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    authorize @order
     @comment = @order.comments.build
     @comments = Comment.where(order_id: @order.id).order(created_at: :desc)
   end
@@ -23,11 +25,13 @@ class OrdersController < ApplicationController
   end
 
   def new
+    authorize Order
     @order = Order.new
     @categories = Category.all.pluck(:title)
   end
 
   def create
+    authorize Order
     @order = Order.new(order_params)
     @order.user = current_user
     @order.category = new_category
@@ -51,6 +55,14 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
   
+  def destroy
+    @order = Order.find(params[:id])
+    authorize @order
+    @order.destroy
+    flash[:success] = 'Order deleted'
+    redirect_to orders_path
+  end
+
   private
 
   def new_category
