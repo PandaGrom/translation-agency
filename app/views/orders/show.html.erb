@@ -17,11 +17,11 @@
   <br>
   <span>File report: </span><br>
   <span>Symbols count: </span>
-  <%= @order.order_file_report.symbols_count %><br>
+  <%= @order.order_file_report&.symbols_count %><br>
   <span>Words count: </span>
-  <%= @order.order_file_report.words_count %><br>
+  <%= @order.order_file_report&.words_count %><br>
   <span>Symbols exclude spaces count: </span>
-  <%= @order.order_file_report.symbols_exlude_spaces_count%><br>
+  <%= @order.order_file_report&.symbols_exlude_spaces_count%><br>
   <br>
   <%= link_to 'Export csv', export_csv_file_order_path(@order), class: "btn btn-outline-info" %>
   <%= link_to 'Download file', @order.file, class: "btn btn-outline-info"%>
@@ -30,7 +30,7 @@
       <span>Send comment: </span><br>
       <div class='mb-3 row'>
         <div class='col-sm-10'>
-          <%= f.text_area :text, class: 'form-control my-2'%>
+          <%= f.text_area :text, required: true, class: 'form-control my-2'%>
         </div>
       </div>
       <%= f.submit 'Send comment', class: 'btn btn-outline-success my-2 my-sm-0'%>

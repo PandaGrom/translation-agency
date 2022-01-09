@@ -1,12 +1,12 @@
-require 'csv'
+
 
 class OrdersController < ApplicationController
   before_action :find_category, only: [:create]
   def index
     @orders = if current_user.role == 'user'
-                current_user.orders
+                current_user.orders.order(:created_at)
               else
-                Order.search(params[:search])
+                Order.search(params[:search]).order(:created_at)
               end
   end
 
@@ -41,40 +41,20 @@ class OrdersController < ApplicationController
   end
 
   def export_csv_file
-    @order = Order.find(params[:id])
-    @report = @order.order_file_report
-
-    csv_report = CSV.generate do |csv|
-      csv << ['order title', 'symbols count', 'words count', 'symbols exclude spaces count']
-      csv << [@order.title, @report.symbols_count, @report.words_count, @report.symbols_exlude_spaces_count]
-    end
-
-    send_data csv_report, filename: "order '#{@order.title}' file report.csv"
+    csv = GenerateCsv.new(params[:id]).call
+    
+    send_data csv[:report], filename: csv[:filename]
   end
-
-  def take
-    change_aasm_state(:take)
+ 
+  def update
+    UpdateOrder.new(params[:id], params[:action_type]).call
+    redirect_to orders_path
   end
-
-  def close
-    change_aasm_state(:complete)
-  end
-
-  def open
-    change_aasm_state(:cancel)
-  end
-
+  
   private
 
   def new_category
     Category.create(title: @category.title)
-  end
-
-  def change_aasm_state(method)
-    @order = Order.find(params[:id])
-    @order.send(method)
-    @order.save!
-    redirect_to orders_path
   end
 
   def find_category

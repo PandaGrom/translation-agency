@@ -7,12 +7,17 @@ class CalculateFileReport
   def perform(order_id)
     @order = Order.find(order_id)
 
-    @order.file.blob.open do |file|
+    analyze_report(@order)
+    
+  end
+
+  def analyze_report(order)
+    order.file.blob.open do |file|
       @content = file.read
     end
 
     OrderFileReport.create(
-      order: @order,
+      order: order,
       symbols_count: @content.length,
       words_count: @content.split.count,
       symbols_exlude_spaces_count: @content.split.join.length
