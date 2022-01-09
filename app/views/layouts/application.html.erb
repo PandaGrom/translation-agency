@@ -11,66 +11,87 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href= "<%=root_path%>">Home</a>
+        <a class="navbar-brand" href= "<%=root_path%>"><%= t('menu.home')%></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
-              <ul class="nav nav-pills">
-                <%if current_user.role != 'user'%>
-                  <li class="nav-item">
-                    <%= link_to 'Orders', orders_path, class: "nav-link" %>
-                  </li>
-                <%else%>
-                  <li class="nav-item">
-                    <%= link_to 'My Orders', orders_path, class: "nav-link" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Create order', new_order_path, class: "nav-link" %>
-                  </li>
-                <%end%>
-                <%if current_user.admin? %>
-                  <li class="nav-item">
-                    <%= link_to 'Users', users_path, class: "nav-link" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Comments', admin_comments_path, class: "nav-link" %>
-                  </li>
-                <% end %>
+              <%if current_user.role != 'user'%>
                 <li class="nav-item">
-                  <%= link_to 'Edit profile', edit_user_registration_path, class: "nav-link" %>
+                  <%= link_to "#{t('.button_orders')}", orders_path, class: "nav-link" %>
+                </li>
+              <%else%>
+                <li class="nav-item">
+                  <%= link_to "#{t('.button_my_orders')}", orders_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Logout', destroy_user_session_path, class: "nav-link", method: :delete %>
+                  <%= link_to "#{t('.button_new_order')}", new_order_path, class: "nav-link" %>
                 </li>
-              </ul>
-            <% else %>
-              <ul class="nav nav-pills">
+              <%end%>
+              <%if current_user.admin? %>
                 <li class="nav-item">
-                  <%= link_to 'Login', new_user_session_path, class: "nav-link" %></td>
+                  <%= link_to "#{t('.button_users')}", users_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "#{t('.button_comments')}", admin_comments_path, class: "nav-link" %>
+                </li>
+              <% end %>
+              <li class="nav-item">
+                <%= link_to "#{t('.button_edit_profile')}", edit_user_registration_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Register now', new_user_registration_path, class: "nav-link" %>
+                <%= link_to "#{t('.button_logout')}", destroy_user_session_path, class: "nav-link", method: :delete %>
               </li>
             </ul>
+          <% else %>
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <%= link_to "#{t('.login')}", new_user_session_path, class: "nav-link" %></td>
+            </li>
+            <li class="nav-item">
+              <%= link_to "#{t('.register')}", new_user_registration_path, class: "nav-link" %>
+            </li>
+          </ul>
+        <% end %>
+      </ul>
+      <form class="d-flex">
+        <%= form_tag orders_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
+          <%= submit_tag("#{t('.search')}", :title => nil, class: "btn btn-outline-success my-2 my-sm-0")  %>
+        <% end %>
+      </form>
+    </div>
+    <ul class="nav nav-pills">
+      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+        <li class="dropdown">
+          <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black',
+            data: {"bs-toggle": "dropdown" } do %>
+            <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1"%>
+            <%= t I18n.locale %>
           <% end %>
-        </ul>
-        <form class="d-flex">
-          <%= form_tag orders_path, :method => 'get' do %>
-            <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
-            <%= submit_tag('Search', :title => nil, class: "btn btn-outline-success my-2 my-sm-0")  %>
-          <% end %>
-        </form>
-      </div>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if current_user&.blocked %>
-      <h4>You are blocked :c</h4>
-    <% else %>
-      <%= yield %>
-    <% end %>
-  </body>
+          <ul class="dropdown-menu">
+            <% I18n.available_locales.each do |locale| %>
+              <li>
+                <% if I18n.locale == locale %>
+                  <%= tag.span t(locale), class: "dropdown-item" %>
+                <%else%>
+                  <%= link_to t(locale), root_path(locale: locale), class: "dropdown-item "%>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </ul>
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if current_user&.blocked %>
+    <h4>You are blocked :c</h4>
+  <% else %>
+    <%= yield %>
+  <% end %>
+</body>
 </html>

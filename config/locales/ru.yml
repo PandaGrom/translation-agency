@@ -1,0 +1,34 @@
+ru:
+  en: Английский
+  ru: Русский
+  home:
+    index:
+      h1: "Добро пожаловать на сайт Агентство переводов!"
+      h2: "Наш сайт предоставляет услуги:"
+      orders: "Заказы"
+      users: 'Пользователи'
+      comments: 'Комментарии'
+      new_order: 'Создать новый заказ'
+      orders_discription: 'Посмотрите список всех заказов'
+      users_discription: 'Посмотрите список всех пользователей'
+      comments_discription: 'Посмотрите список всех комментариев'
+      new_order_discription: 'Создайте заказ'
+      button_orders: "Заказы"
+      button_users: 'Пользователи'
+      button_comments: 'Комментарии'
+      button_new_order: 'Создать заказ'
+
+  layouts:
+    application:
+      button_orders: "Заказы"
+      button_users: 'Пользователи'
+      button_comments: 'Комментарии'
+      button_new_order: 'Создать заказ'
+      button_my_orders: 'Мои заказы'
+      button_logout: 'Выйти из аккаунта'
+      button_edit_profile: 'Редактировать профиль'
+      register: 'Регистрация'
+      login: 'Вход'
+      search: 'Поиск'
+  menu:
+    home: "Главная"

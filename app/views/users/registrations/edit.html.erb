@@ -8,11 +8,11 @@
         <label for="floatingInput">Email</label>
       </div>
       <div class="form-floating">
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control my-2", id: "floatingInput" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control my-2", id: "floatingInput", required: true %>
         <label for="floatingInput">Name</label>
       </div>
       <div class="form-floating">
-        <%= f.text_field :contacts, autofocus: true, autocomplete: "name", class: "form-control my-2", id: "floatingInput" %>
+        <%= f.text_field :contacts, autofocus: true, autocomplete: "contacts", class: "form-control my-2", id: "floatingInput", required: true %>
         <label for="floatingInput">Contacts</label>
       </div>
       <% if current_user.translator? %>
