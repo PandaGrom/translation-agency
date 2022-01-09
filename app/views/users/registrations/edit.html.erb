@@ -16,10 +16,10 @@
         <label for="floatingInput">Contacts</label>
       </div>
       <% if current_user.translator? %>
-      <div class="form-floating">
-        <%= f.text_field :pricing, autofocus: true, autocomplete: "pricing", class: "form-control my-2", id: "floatingInput" %>
-        <label for="floatingInput">Pricing(for 1000 symbols)</label>
-      </div>
+        <div class="form-floating">
+          <%= f.text_field :pricing, autofocus: true, autocomplete: "pricing", class: "form-control my-2", id: "floatingInput" %>
+          <label for="floatingInput">Pricing(for 1000 symbols)</label>
+        </div>
         <span>Choose your categories:</span>
         <div>
           <%= collection_check_boxes(
