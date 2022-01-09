@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  
+
   around_action :switch_locale
 
   private
@@ -17,13 +17,13 @@ class ApplicationController < ActionController::Base
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale locale, &action
   end
-  
+
   def locale_from_url
     locale = params[:locale]
 
     return locale if I18n.available_locale.map(&:to_s).include?(locale)
   end
-  
+
   def default_url_options
     { locale: I18n.locale }
   end

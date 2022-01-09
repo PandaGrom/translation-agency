@@ -8,7 +8,6 @@ class CalculateFileReport
     @order = Order.find(order_id)
 
     analyze_report(@order)
-    
   end
 
   def analyze_report(order)

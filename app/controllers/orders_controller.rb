@@ -1,5 +1,3 @@
-
-
 class OrdersController < ApplicationController
   before_action :find_category, only: [:create]
   def index
@@ -16,12 +14,6 @@ class OrdersController < ApplicationController
     authorize @order
     @comment = @order.comments.build
     @comments = Comment.where(order_id: @order.id).order(created_at: :desc)
-  end
-
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
-    redirect_to orders_path
   end
 
   def new
@@ -46,15 +38,15 @@ class OrdersController < ApplicationController
 
   def export_csv_file
     csv = GenerateCsv.new(params[:id]).call
-    
+
     send_data csv[:report], filename: csv[:filename]
   end
- 
+
   def update
     UpdateOrder.new(params[:id], params[:action_type]).call
     redirect_to orders_path
   end
-  
+
   def destroy
     @order = Order.find(params[:id])
     authorize @order
