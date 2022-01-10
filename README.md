@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Translation agency
 
-Things you may want to cover:
+This website allows translators to offer their services, and customers to choose the necessary specialists. 
 
-* Ruby version
 
-* System dependencies
+Technologies:
 
-* Configuration
+Rails ~> '6.1.4.1'
 
-* Database creation
+Ruby ~> '3.0.0'
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Sidekiq ~> '6.3.1'

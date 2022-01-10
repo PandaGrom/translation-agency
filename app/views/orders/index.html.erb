@@ -20,7 +20,7 @@
           <%= link_to 'In progress', order_path(order, action_type: :take), method: :patch, class: "btn btn-outline-info my-2 my-sm-0" %>
         <% end %>
         <% if order.aasm_state == 'in_progress' %>
-          <%= link_to 'Open', order_path(order, action_type: :cancel), method: :patch, class: "btn btn-outline-info my-2 my-sm-0" %>
+          <%= link_to 'Reopen', order_path(order, action_type: :cancel), method: :patch, class: "btn btn-outline-info my-2 my-sm-0" %>
           <%= link_to 'Completed', order_path(order, action_type: :complete), method: :patch, class: "btn btn-outline-success my-2 my-sm-0" %>
         <% end %>
       <% end %>
