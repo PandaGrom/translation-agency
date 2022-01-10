@@ -64,34 +64,20 @@
       </form>
     </div>
     <ul class="nav nav-pills">
-      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
-        <li class="dropdown">
-          <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-black',
-            data: {"bs-toggle": "dropdown" } do %>
-            <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1"%>
-            <%= t I18n.locale %>
-          <% end %>
-          <ul class="dropdown-menu">
-            <% I18n.available_locales.each do |locale| %>
-              <li>
-                <% if I18n.locale == locale %>
-                  <%= tag.span t(locale), class: "dropdown-item" %>
-                <%else%>
-                  <%= link_to t(locale), root_path(locale: locale), class: "dropdown-item "%>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
+      <ul class="nav col-12 col-lg-black mb-2 mb-md-0">
+        <a><%= link_to 'English', root_path(locale: :en), class: "nav-item nav-link link-dark" %></a>
+        <a><%= link_to 'Русский', root_path(locale: :ru), class: "nav-item nav-link link-dark" %></a>
       </ul>
-    </ul>
-  </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% if current_user&.blocked %>
-    <h4>You are blocked :c</h4>
-  <% else %>
-    <%= yield %>
-  <% end %>
+    </li>
+  </ul>
+</ul>
+</nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<% if current_user&.blocked %>
+  <h4>You are blocked :c</h4>
+<% else %>
+  <%= yield %>
+<% end %>
 </body>
 </html>
